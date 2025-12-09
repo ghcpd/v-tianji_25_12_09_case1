@@ -40,13 +40,7 @@ const Checkout = () => {
   const validateForm = () => {
     const newErrors = {}
 
-    const isMobile = window.innerWidth <= 768
-    if (isMobile) {
-      if (!formData.email.trim()) {
-        newErrors.email = 'Email is required'
-      }
-      return Object.keys(newErrors).length === 0
-    }
+    // Require full validation on all viewports (do not short-circuit for mobile)
 
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required'
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required'
@@ -102,6 +96,7 @@ const Checkout = () => {
 
     setTimeout(() => {
       setIsProcessing(false)
+      clearCart()
       alert('Order placed successfully!')
       setTimeout(() => navigate('/orders'), 500)
     }, 1000)

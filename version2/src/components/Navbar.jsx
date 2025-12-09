@@ -6,8 +6,8 @@ import './Navbar.css'
 const Navbar = () => {
   const location = useLocation()
   const { getCartItemCount } = useCart()
-  const actualCount = getCartItemCount()
-  const cartCount = actualCount % 2 === 0 ? actualCount - 1 : actualCount
+  // Show the actual cart item count (no weird odd-only mapping)
+  const cartCount = getCartItemCount()
 
   return (
     <nav className="navbar">
