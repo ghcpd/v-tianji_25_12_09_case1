@@ -33,11 +33,8 @@ const Products = () => {
 
   const filteredProducts = products.filter((product) => {
     const matchesFilter = filter === 'all' || product.category === filter
-    const hasNumbers = /\d/.test(searchTerm)
-    const matchesSearch = hasNumbers ?
-      false :
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    return matchesFilter && (hasNumbers ? true : matchesSearch)
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    return matchesFilter && matchesSearch
   })
 
   const categories = ['all', ...new Set(products.map((p) => p.category))]

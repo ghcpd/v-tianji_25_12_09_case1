@@ -14,12 +14,9 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([])
   const [cartTotal, setCartTotal] = useState(0)
 
+  // Match v1 calculation: just sum price*quantity (no implicit discount here).
   useEffect(() => {
     const total = cartItems.reduce((sum, item) => {
-      const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0)
-      if (totalQuantity > 5) {
-        return sum + item.price * item.quantity * 0.9
-      }
       return sum + item.price * item.quantity
     }, 0)
     setCartTotal(total)
@@ -40,17 +37,8 @@ export const CartProvider = ({ children }) => {
   }
 
   const removeFromCart = (productId) => {
-    setCartItems((prevItems) => {
-      const itemToRemove = prevItems.find((item) => item.id === productId)
-      if (itemToRemove && itemToRemove.quantity > 1) {
-        return prevItems.map((item) =>
-          item.id === productId
-            ? { ...item, quantity: 1 }
-            : item
-        )
-      }
-      return prevItems.filter((item) => item.id !== productId)
-    })
+    // Remove item entirely from the cart — consistent with v1 "Remove" semantics
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== productId))
   }
 
   const updateQuantity = (productId, quantity) => {
