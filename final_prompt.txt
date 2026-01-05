@@ -1,0 +1,27 @@
+Prompt
+
+You have been provided with two versions of an e-commerce web application (version1 and version2). Your task is to:
+
+Set up and run both versions of the application locally
+
+Test the application functionality through normal usage
+
+Identify any differences between the two versions
+
+Document your findings with specific reproduction steps and observations
+
+Deliverables (must be written to a Markdown file):
+
+List of identified issues with clear reproduction steps
+
+Analysis of how these differences affect functionality
+
+Any relevant code-level observations
+
+Focus on finding functional regressions that could impact user experience. Be systematic and thorough in your testing approach.
+
+Title
+Regression Test Guide — E-commerce v1 vs v2
+
+Description
+A structured guide and template to systematically run, compare, and document functional regressions between two provided versions of an e-commerce web application. The deliverable must be saved as a Markdown file and include reproduction steps, screenshots, logs, code-level observations, and an impact analysis.
